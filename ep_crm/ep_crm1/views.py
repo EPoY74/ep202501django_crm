@@ -13,11 +13,6 @@ def clients_list(request):
 def client_detail(request, pk):
     """Вывожу детали по клиенту"""
     client=get_object_or_404(Client,pk=pk)
-    # fields = Client._meta.get_fields()
-    # verbose_names ={
-    #     fields.name : field.verbose_name for field in fields if field.verbose_name
-
-    # }
     verbose_names = {}
     for field in Client._meta.get_fields():
         if hasattr(field, 'verbose_name'):
