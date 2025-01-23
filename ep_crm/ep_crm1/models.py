@@ -9,9 +9,7 @@
 
 from django.db import models
 
-
 # Create your models here.
-
 class Client(models.Model):
     """Модель для хранения данных о клиентах
 
@@ -22,8 +20,11 @@ class Client(models.Model):
     email = models.EmailField(verbose_name="Электронная почта")
     phone = models.CharField(max_length=20, verbose_name="Телефон")
     address = models.TextField(verbose_name="Адрес")
-
     # objects = models.Manager()
+
+
+    objects = models.Manager()
+
 
     def __str__(self):
         return f"{self.name} | {self.email}"
@@ -46,10 +47,12 @@ class Deal(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
 
 
+    objects = models.Manager()
+
+
     def __str__(self):
         """переопределяю название модели"""
         return f"{self.client} | {self.amount}"
-
 
     class Meta:
         """Переопределяю имя модели в админке
@@ -69,6 +72,7 @@ class Task(models.Model):
     due_time = models.DateTimeField(verbose_name="Исполнить до")
     completed = models.BooleanField(default=False, verbose_name="Исполнено")
 
+    objects = models.Manager()
 
     def __str__(self):
         """Переопределяю имя модели"""
