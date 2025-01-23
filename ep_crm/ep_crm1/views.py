@@ -22,7 +22,12 @@ def client_detail(request, pk):
     for field in Client._meta.get_fields():
         if hasattr(field, 'verbose_name'):
             verbose_names[field.name] = field.verbose_name
-    return render(request, 'client_detail.html',{'client' : client, 'verbose_names' : verbose_names})
+            table_name = Client._meta.verbose_name
+    return render(request, 'client_detail.html',
+                  {'client' : client,
+                    'verbose_names' : verbose_names,
+                    'table_name' : table_name,
+                    })
 
 
 
