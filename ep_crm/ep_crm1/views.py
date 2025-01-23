@@ -7,7 +7,16 @@ from ep_crm1.models import Client  #, Task, Deal
 def clients_list(request):
     """вывожу список клиентов"""
     clients = Client.objects.all()
-    return render(request, 'clients_list.html', {'clients' : clients})
+    verbose_names = {}
+    for field in Client._meta.get_fields():
+        if hasattr(field, 'verbose_name'):
+            verbose_names[field.name] = field.verbose_name
+            table_name = Client._meta.verbose_name_plural
+    return render(request, 'clients_list.html',
+                   {'clients' : clients,
+                    'verbose_name' : verbose_names,
+                    'table_name' : table_name,
+                    })
 
 
 def client_detail(request, pk):
