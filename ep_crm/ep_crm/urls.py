@@ -17,6 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from ep_crm1.views import (
+    clients_list,
+    client_detail
+)
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('clients/', clients_list, name='clients_list'),
+    path('clients/<int:pk>', client_detail, name='client_detail'),
 ]
