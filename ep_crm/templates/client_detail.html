@@ -4,16 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Клиент</title>
+    <title>{{table_name}}</title>
 </head>
 
 <body>
-    <h1>Клиент</h1>
+    <h1>{{table_name}}</h1>
     <ul>
-        <li>{{client.name}}</li>
-        <li>{{client.email}}</li>
-        <li>{{client.phone}}</li>
-        <li>{{client.address}}</li>
+        <li>{{verbose_names.name}} : {{client.name}}</li>
+        <li>{{verbose_names.email}} : {{client.email}}</li>
+        <li>{{verbose_names.phone}} : {{client.phone}}</li>
+        <li>{{verbose_names.address}} : {{client.address}}</li>
     </ul>
 
 </body>
